@@ -22,14 +22,11 @@
 
 package com.acadiasoft.simm.engine.test;
 
-import com.acadiasoft.simm.model.object.AddOnFixedAmount;
-import com.acadiasoft.simm.model.object.AddOnNotional;
-import com.acadiasoft.simm.model.object.AddOnNotionalFactor;
+import com.acadiasoft.simm.model.object.*;
 import com.acadiasoft.simm.model.object.imtree.identifiers.ProductClass;
-import com.acadiasoft.simm.model.object.Sensitivity;
-import com.acadiasoft.simm.model.object.ProductMultiplier;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -204,4 +201,9 @@ public abstract class AbstractAcadiaUnitTestV2_0 {
   public static final AddOnNotional AN9 = new AddOnNotional("ProductFour", new BigDecimal("13000000"));
   public static final AddOnFixedAmount AN10 = new AddOnFixedAmount(new BigDecimal("16500000"));
 
+  // schedule
+  public static final ScheduleNotional SN1 = new ScheduleNotional(new BigDecimal("1000000"), "USD", new BigDecimal("1000000"), LocalDate.of(2018,9,3), LocalDate.of(2028,5,3));
+  public static final ScheduleNotional SN2 = new ScheduleNotional(new BigDecimal("3000000"), "USD", new BigDecimal("3000000"), LocalDate.of(2018,9,3), LocalDate.of(2023,5,3));
+  public static final SchedulePV SPV1 = new SchedulePV(new BigDecimal("20000"),"EUR",new BigDecimal("24000"),LocalDate.of(2018,9,3),LocalDate.of(2028,5,3));
+  public static final SchedulePV SPV2 = new SchedulePV(new BigDecimal("-10000"), "USD", new BigDecimal("-10000"),LocalDate.of(2018,9,3),LocalDate.of(2023,5,3));
 }

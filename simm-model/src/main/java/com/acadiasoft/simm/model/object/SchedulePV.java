@@ -4,27 +4,27 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class ScheduleNotional implements Serializable {
+public class SchedulePV implements Serializable {
 
-    private final BigDecimal notional;
+    private final BigDecimal PV;
     private final String currency;
-    private final BigDecimal notionalUSD;
+    private final BigDecimal PVUSD;
     private final LocalDate valuationDate;
     private final LocalDate endDate;
 
-    public ScheduleNotional(BigDecimal notional, String currency, BigDecimal notionalUSD, LocalDate valuationDate, LocalDate endDate) {
-        this.notional = notional;
+    public SchedulePV(BigDecimal PV, String currency, BigDecimal PVUSD, LocalDate valuationDate, LocalDate endDate) {
+        this.PV = PV;
         this.currency = currency;
-        this.notionalUSD = notionalUSD;
+        this.PVUSD = PVUSD;
         this.valuationDate = valuationDate;
         this.endDate = endDate;
     }
 
     public String getCurrency() { return currency; }
 
-    public BigDecimal getNotional() { return notional; }
+    public BigDecimal getPV() { return PV; }
 
-    public BigDecimal getNotionalUSD() { return notionalUSD; }
+    public BigDecimal getPVUSD() { return PVUSD; }
 
     public LocalDate getValuationDate() { return valuationDate; }
 
