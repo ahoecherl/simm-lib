@@ -12,7 +12,7 @@ public interface ImTree extends Serializable {
 
   public static int TOTAL_COMMAS = 7;
   public static String COMMA = ",";
-  public static String END_LINE = "\n";
+  public static String END_LINE = "\r\n";
   public static String FLAT_CSV_HEADER = "Level,Im Model,Silo,RiskClass,SensitivityType,Bucket,WeightedSensitivity,ExposureAmount";
 
   public static String parseToFlatCsv(ImTree tree) {

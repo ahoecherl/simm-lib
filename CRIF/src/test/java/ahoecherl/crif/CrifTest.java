@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.List;
 
@@ -37,6 +38,42 @@ public class CrifTest {
         ImTree result = Simm.calculateTreeStandard(crif.getSensitivities());
         ImTree result2 = Simm.calculateTreeTotal(crif.getSensitivities(), crif.getProductMultipliers(), crif.getAddOnNotionalFactors(), crif.getAddOnNotionals(), crif.getAddOnFixedAmount());
         int asdf = 1;
+    }
+
+    @Test
+    public void eulerAnalysis() throws Exception{
+        {Reader in = new FileReader(new File("KleinesKomplettesTestportfolioPost_CRIF.csv"));
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                .withFirstRecordAsHeader()
+                .parse(in);
+        Crif crif = new Crif(records);
+        List<Sensitivity> s = crif.getSensitivities();
+        ImTree result = Simm.calculateTreeStandard(crif.getSensitivities());
+        String csv = ImTree.parseToFlatCsv(result);
+        try(PrintWriter out = new PrintWriter("NonBumpedTreePost.csv")){
+            out.println(csv);
+        }}
+        {Reader in = new FileReader(new File("KleinesKomplettesTestportfolioCollect_CRIF.csv"));
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                .withFirstRecordAsHeader()
+                .parse(in);
+        Crif crif = new Crif(records);
+        List<Sensitivity> s = crif.getSensitivities();
+        ImTree result = Simm.calculateTreeStandard(crif.getSensitivities());
+        String csv = ImTree.parseToFlatCsv(result);
+        try(PrintWriter out = new PrintWriter("NonBumpedTreeCollect.csv")){
+            out.println(csv);
+        }}
+        int asdf = 1;
+    }
+
+    @Test
+    public void bumpCrifTest() throws Exception{
+        Reader in = new FileReader(new File("KleinesKomplettesTestportfolioPost_CRIF.csv"));
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                .withFirstRecordAsHeader()
+                .parse(in);
+        Crif crif = new Crif(records);
     }
 
 }
